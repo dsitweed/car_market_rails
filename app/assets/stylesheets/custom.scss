@@ -1,0 +1,231 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+// global style
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+:root {
+	--header-outer-height: 110px;
+	--header-inner-height: 70px;
+	--header-height-difference: calc(
+		var(--header-outer-height) - var(--header-inner-height)
+	);
+	--header-bg: #fff;
+}
+
+body {
+	font-family: "DM Sans", sans-serif;
+	background-color: #f2f5f7;
+	line-height: 1.5;
+	min-height: 300vh;
+	position: relative;
+}
+
+li{
+	list-style: none;
+}
+
+a{
+  text-decoration: dashed;
+}
+
+// HEADER
+
+.responsive-wrapper {
+	width: 90%;
+	max-width: 1280px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Sticky header */
+.header-outer {
+	/* Make it stick */
+	height: var(--header-outer-height);
+	position: sticky;
+	top: calc(var(--header-height-difference) * -1); /* Multiply by -1 to get a negative value */
+	display: flex;
+	align-items: center;
+
+	/* Other */
+	background-color: var(--header-bg);
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+
+	.header-inner {
+		/* Make it stick */
+		height: var(--header-inner-height);
+		position: sticky;
+		top: 0;
+
+		/* Other */
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		a {
+			text-decoration: dashed;
+		}
+	}
+
+	.header-logo img {
+		display: block;
+		height: calc(var(--header-inner-height) - 30px);
+	}
+
+	.header-navigation {
+		display: flex;
+		flex-wrap: wrap;
+
+		a,
+		button {
+      font-size: 18px;
+			color: inherit;
+			margin-left: 1.75rem;
+			position: relative;
+			font-weight: 500;
+		}
+
+		a {
+      display: none;
+			text-decoration: none;
+		}
+
+		button {
+			border: 0;
+			background-color: transparent;
+			padding: 0;
+		}
+
+		a:hover:after,
+		button:hover:after {
+			transform: scalex(1);
+		}
+
+		a:after,
+		button:after {
+			transition: 0.25s ease;
+			content: "";
+			display: block;
+			width: 100%;
+			height: 2px;
+			background-color: currentcolor;
+			transform: scalex(0);
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+		}
+	}
+}
+
+@media (min-width: 800px) {
+	.header-navigation {
+		a {
+			display: inline-block !important;
+		}
+
+		button {
+			display: none;
+		}
+	}
+}
+
+.main {
+	margin-top: 3rem;
+}
+
+.widget {
+	width: 100%;
+	max-width: 600px;
+	border-radius: 8px;
+	box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+	padding: 2.5rem;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2rem;
+	font-size: 1.125rem;
+
+	> * + * {
+		margin-top: 1.25em;
+	}
+
+	h2 {
+		font-weight: 700;
+		line-height: 1.25;
+	}
+
+	code {
+		display: inline-block;
+		padding: 0.125em 0.25em;
+		border-radius: 2px;
+		background-color: #bee5d3;
+	}
+
+	strong {
+		font-weight: 700;
+	}
+}
+
+
+// FOOTER
+
+#footer{
+	background: #f7f7f7;
+  padding: 3rem;
+	padding-top: 7rem;
+  padding-bottom: 80px;
+	background-image: url(https://arena.km.ua/wp-content/uploads/3538533.jpg);
+
+  a {
+    color: #777777;
+    &:hover {
+      color: #000;
+    }
+  }
+
+  h2 {
+    padding-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .logo-footer{
+    max-width: 100%;
+  }
+
+  .social-icons{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .social-icons a i{
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    border-radius: 3px;
+    color: #82074a;
+    font-size: 16px;
+    margin-right: 12px;
+    width: 26px;
+  }
+}
+
+.copy-right-sec{
+	padding: 1.8rem;
+  background: #82074a;
+  color: #fff;
+  text-align: center;
+}
+.copy-right-sec a{
+	color: #fcd462;
+  font-weight: 500;
+}
+/* footer section end */

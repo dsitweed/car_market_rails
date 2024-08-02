@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Settings version:
 
-Things you may want to cover:
+- rbenv: rbenv 1.2.0-72-g5d78e47
 
-* Ruby version
+- Ruby version: ruby 3.2.2 (2023-03-30 revision e51014f9c0) [x86_64-linux]
 
-* System dependencies
+- Rails version: Rails 7.0.8.4
 
-* Configuration
+- System dependencies
 
-* Database creation
+- Configuration
 
-* Database initialization
+- Database creation
 
-* How to run the test suite
+- Database initialization
 
-* Services (job queues, cache servers, search engines, etc.)
+- How to run the test suite
 
-* Deployment instructions
+- Services (job queues, cache servers, search engines, etc.)
 
-* ...
+- Deployment instructions
+
+## Command line logs
+
+```bash
+rails new car_market
+
+rails db:drop db:reset db:create
+```
+
+## Dependencies gem
