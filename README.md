@@ -28,6 +28,9 @@
 rails new car_market
 
 rails db:drop db:reset db:create
+
+rails generate model User email:string:index name:string password_digest:string remember_digest:string role:integer activation_digest:string activated:boolean activated_at:datetime reset_digest:string reset_sent_at:datetime
+
 ```
 
 ## Dependencies gem
