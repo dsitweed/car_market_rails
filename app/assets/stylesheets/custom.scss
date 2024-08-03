@@ -3,7 +3,19 @@
 @import "bootstrap";
 @import "font-awesome";
 
-// global style
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+$gray-light: #777;
+$gray-easy-light : #e8e8e8;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* universal */
 
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
@@ -30,12 +42,20 @@ body {
 	position: relative;
 }
 
-li{
+li {
 	list-style: none;
 }
 
-a{
+a {
   text-decoration: dashed;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
 }
 
 // HEADER
@@ -55,6 +75,7 @@ a{
 	top: calc(var(--header-height-difference) * -1); /* Multiply by -1 to get a negative value */
 	display: flex;
 	align-items: center;
+	z-index: 99;
 
 	/* Other */
 	background-color: var(--header-bg);
@@ -229,3 +250,109 @@ a{
   font-weight: 500;
 }
 /* footer section end */
+
+// SIGN UP
+
+.wrapper {
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  background: #fff;
+  padding: 34px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+  h2 {
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 28px;
+      border-radius: 12px;
+      background: #4070f4;
+    }
+  }
+
+  form {
+    margin-top: 30px;
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+    }
+
+    .input-box {
+      height: 52px;
+      margin: 18px 0;
+
+      input {
+        height: 100% !important;
+        width: 100%;
+        outline: none;
+        padding: 0 15px;
+        font-size: 17px;
+        font-weight: 400;
+        color: #333;
+        border: 1.5px solid #C7BEBE;
+        border-bottom-width: 2.5px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+
+        &:focus,
+        &:valid {
+          border-color: #4070f4;
+        }
+      }
+
+      &.button {
+        input {
+          color: #fff;
+          letter-spacing: 1px;
+          border: none;
+          background: #4070f4;
+          cursor: pointer;
+
+          &:hover {
+            background: #0e4bf1;
+          }
+        }
+      }
+    }
+
+    .policy {
+      display: flex;
+      align-items: center;
+    }
+
+    h3 {
+      color: #707070;
+      font-size: 16px;
+      font-weight: 500;
+      margin-left: 10px;
+    }
+
+    .text {
+      h3 {
+        color: #333;
+        width: 100%;
+        text-align: center;
+
+        a {
+          color: #4070f4;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

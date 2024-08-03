@@ -1,0 +1,8 @@
+regex:
+  email: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
+pagy:
+  number_items_10: 10
+  number_items_20: 20
+length:
+  length_255: 255
+  length_150: 150
