@@ -1,6 +1,5 @@
 <% provide(:title, "Sign up") %>
 
-
 <div class="wrapper">
   <h2>Registration</h2>
   <%= form_with(model: @user) do |f| %>
@@ -24,7 +23,7 @@
       <%= f.submit "Register Now" %>
     </div>
     <div class="text">
-      <h3>Already have an account? <%= link_to "Login now", "#" %></h3>
+      <h3>Already have an account? <%= link_to "Login now", login_path %></h3>
     </div>
   <% end %>
 </div>

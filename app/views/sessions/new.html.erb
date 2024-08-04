@@ -1,0 +1,23 @@
+<% provide(:title, "Login") %>
+
+<div class="wrapper">
+  <h2>Login</h2>
+  <%= form_with(url: login_path, scope: :session) do |f| %>
+    <div class="input-box">
+      <%= f.email_field :email, placeholder: "Enter your email", required: true %>
+    </div>
+    <div class="input-box">
+      <%= f.password_field :password, placeholder: "Enter password", required: true %>
+    </div>
+    <div class="policy">
+      <%= check_box_tag :remembered, "1", false, required: false %>
+      <h3>Remember me</h3>
+    </div>
+    <div class="input-box button">
+      <%= f.submit "Login Now" %>
+    </div>
+    <div class="text">
+      <h3>No have Account? <%= link_to "Sign up now", signup_path %></h3>
+    </div>
+  <% end %>
+</div>

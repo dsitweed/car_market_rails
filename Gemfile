@@ -20,8 +20,9 @@ gem "bootstrap-sass"
 gem "config"
 gem "faker"
 gem "font-awesome-sass"
-gem "sassc-rails"
 gem "pagy"
+gem "sassc-rails"
+gem "tailwindcss-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

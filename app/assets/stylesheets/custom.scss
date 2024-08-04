@@ -289,11 +289,10 @@ textarea {
     }
 
     .input-box {
-      height: 52px;
       margin: 18px 0;
 
       input {
-        height: 100% !important;
+        height: 52px !important;
         width: 100%;
         outline: none;
         padding: 0 15px;
@@ -355,4 +354,9 @@ textarea {
       }
     }
   }
+}
+
+// Toggle display elements
+.dropdown-menu.active {
+  display: block;
 }
