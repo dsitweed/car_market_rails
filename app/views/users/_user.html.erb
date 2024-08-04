@@ -1,5 +1,19 @@
-<div>
-  <%= gravatar_for user %>
-  <h1><%= user.name %></h1>
-  <h2><%= user.email %></h2>
+<div class="container-column">
+  <div class="column">
+    <div><%= gravatar_for user, size: 80 %></div>
+    <div>
+      <%= link_to "Show user", user %>
+      <% if current_user.is_admin? || current_user.id == user.id %>
+        <%= link_to "Edit user", edit_user_path(user) %>
+      <% end %>
+      <% if current_user.is_admin? && current_user != user %>
+        <%= link_to "Delete user", user, data: { "turbo-method": :delete,
+                                                  turbo_confirm: "You sure"} %>
+      <% end %>
+    </div>
+  </div>
+  <div class="column">
+    <p>Name: <%= user.name %></p>
+    <p>Email: <%= user.email %></p>
+  </div>
 </div>

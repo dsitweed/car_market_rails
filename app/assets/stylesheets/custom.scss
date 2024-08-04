@@ -360,3 +360,15 @@ textarea {
 .dropdown-menu.active {
   display: block;
 }
+
+// Custom styles
+.container-column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.column {
+  flex: 1 1 48%;
+}

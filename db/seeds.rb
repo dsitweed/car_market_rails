@@ -9,7 +9,7 @@ User.create!(name: "Admin",
 ## Generate new users
 (1..10).each do |i|
   name = Faker::Name.name
-  email = Faker::Internet.email
+  email = "#{i}-#{Faker::Internet.email}"
   password = "123456"
   User.create!(name: name,
     email: email,

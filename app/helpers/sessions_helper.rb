@@ -13,7 +13,6 @@ module SessionsHelper
         @current_user = user
       end
     elsif user_id = cookies.encrypted[:user_id]
-      # FIXME
       user = User.find_by(id: user_id)
       if user&.authenticated?(cookies.encrypted[:remember_token])
         login user
@@ -42,5 +41,10 @@ module SessionsHelper
     user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
+  end
+
+  # Return true if the given user is current user
+  def current_user? user
+    user&. == current_user
   end
 end

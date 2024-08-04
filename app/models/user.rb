@@ -10,6 +10,8 @@ class User < ApplicationRecord
             format: {with: Settings.regex.email},
             uniqueness: {casesensitive: false}
 
+  scope :desc, -> {order(created_at: :desc)}
+
   # Remembers a user in the database for use in persisten sessions.
   def remember
     self.remember_token = User.new_token
@@ -33,6 +35,11 @@ class User < ApplicationRecord
   # We reuse the remember digest for convenience
   def session_token
     remember_digest || remember
+  end
+
+  def is_admin?
+    return true if role == 2
+    false
   end
 
   class << self
