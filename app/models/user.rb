@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  attr_accessor :remember_token
 
   before_save{email.downcase!}
 
@@ -9,14 +10,46 @@ class User < ApplicationRecord
             format: {with: Settings.regex.email},
             uniqueness: {casesensitive: false}
 
-  # Return the hash digest of the given string
-  def self.digest string
-    cost = if ActiveModel::SecurePassword.min_cost
-      BCrypt::Engine::MIN_COST
-    else
-      BCrypt::Engine.cost
+  # Remembers a user in the database for use in persisten sessions.
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(self.remember_token))
+    remember_digest
+  end
+
+  # Returns true if the given token matches the digest.
+  def authenticated? remember_token
+    return false if remember_digest.nil?
+
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  # Forgets a user.
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
+  # Return a session token to prevent session hijacking.
+  # We reuse the remember digest for convenience
+  def session_token
+    remember_digest || remember
+  end
+
+  class << self
+    # Return the hash digest of the given string
+    def digest string
+      cost = if ActiveModel::SecurePassword.min_cost
+        BCrypt::Engine::MIN_COST
+      else
+        BCrypt::Engine.cost
+      end
+
+      BCrypt::Password.create(string, cost:)
     end
 
-    BCrypt::Password.create(string, cost)
+    # Return a random token
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
   end
 end

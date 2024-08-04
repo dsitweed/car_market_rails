@@ -3,7 +3,10 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params.dig(:session, :email))
+
     if user&.authenticate(params.dig(:session, :password))
+      reset_session
+      params.dig(:session, :remember_me) == "1" ? remember(user) : forget(user)
       login user
       flash[:success] = "Login successful!"
       redirect_to user
@@ -14,11 +17,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    logout if logged_in?
+    redirect_to root_url, status: :see_other
   end
 
   private
 
   def session_params
-    params.require(:session).permit(:email, :password)
+    params.require(:session).permit(:email, :password, :remember_me)
   end
 end

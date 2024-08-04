@@ -4,6 +4,8 @@
 
 function addToggleListener(selected_id, menu_id, toggle_class) {
   const selected_element = document.getElementById(selected_id);
+  if (!selected_element) return;
+
   selected_element.addEventListener("click", function (event) {
     event.preventDefault();
     const menu = document.getElementById(menu_id);
