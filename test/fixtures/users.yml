@@ -1,25 +1,51 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  email: MyString
-  name: MyString
-  password_digest: MyString
-  remember_digest: MyString
+michael:
+  email: michael@gmail.com
+  name: Michael Example
+  password_digest: <%= User.digest("123456") %>
+  remember_digest: <%= User.digest("remember_me") %>
   role: 1
-  activation_digest: MyString
+  activation_digest: <%= User.digest("activation_digest") %>
   activated: false
-  activated_at: 2024-08-02 23:35:25
-  reset_digest: MyString
+  activated_at: <%= Time.zone.now %>
+  reset_digest: <%= User.digest("reset_digest") %>
   reset_sent_at: 2024-08-02 23:35:25
 
-two:
-  email: MyString
-  name: MyString
-  password_digest: MyString
-  remember_digest: MyString
+archer:
+  email: archer@gmail.com
+  name: Archer Example
+  password_digest: <%= User.digest("123456") %>
+  remember_digest: <%= User.digest("remember_me") %>
   role: 1
-  activation_digest: MyString
+  activation_digest: <%= User.digest("activation_digest") %>
   activated: false
-  activated_at: 2024-08-02 23:35:25
-  reset_digest: MyString
-  reset_sent_at: 2024-08-02 23:35:25
+  activated_at: <%= Time.zone.now %>
+  reset_digest: <%= User.digest("reset_digest") %>
+  reset_sent_at: <%= Time.zone.now %>
+
+admin:
+  email: amin@gmail.com
+  name: Amin Example
+  password_digest: <%= User.digest("123456") %>
+  remember_digest: <%= User.digest("remember_me") %>
+  role: 2
+  activation_digest: <%= User.digest("activation_digest") %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+  reset_digest: <%= User.digest("reset_digest") %>
+  reset_sent_at: <%= Time.zone.now %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  email: <%= "user-#{n}@example.com" %>
+  name:  <%= "User #{n}" %>
+  password_digest: <%= User.digest('123456') %>
+  remember_digest: <%= User.digest("remember_me") %>
+  role: 1
+  activation_digest: <%= User.digest("activation_digest") %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+  reset_digest: <%= User.digest("reset_digest") %>
+  reset_sent_at: <%= Time.zone.now %>
+<% end %>

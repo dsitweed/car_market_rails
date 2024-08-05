@@ -8,12 +8,17 @@ class UsersController < ApplicationController
     @pagy, @users = pagy(User.all.desc)
   end
 
-  def show; end
+  def show
+    redirect_to root_url and return unless @user.activated?
+  end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "User created successfully"
+      @user.send_activation_email
+      message = "User created successfully. "
+      message += "Please check your email to activation your account."
+      flash[:info] = message
       redirect_to root_url
     else
       flash.now[:danger] = "Create user failed"

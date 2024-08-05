@@ -1,0 +1,18 @@
+<div style="max-width: 600px; margin: 20px auto; background: #ffffff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+  <%= content_tag(:h1, "Hello #{@user.name} - email: #{@user.email}!") %>
+  <p style="font-size: 16px; color: #555555;">
+    Thank you for registering an account at <strong>Car market</strong>. Please activate your account by clicking the link below:
+  </p>
+  <div style="margin: 20px 0;">
+    <%= link_to "Active account",
+      edit_account_activation_url(@user.activation_token, email: @user.email),
+      style: "padding: 10px 15px; margin: 20px 0; font-size: 18px; font-weight: 600; background-color: #4070f4; border-radius: 6px; color: white; text-decoration: none;"
+    %>
+  </div>
+  <p style="font-size: 16px; color: #555555;">
+    If you do not require this account, you can ignore this email.
+  </p>
+  <p style="font-size: 16px; color: #555555;">
+    Best regards, <br>Customer support team.
+  </p>
+</div>

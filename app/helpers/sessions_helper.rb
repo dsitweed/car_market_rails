@@ -14,7 +14,7 @@ module SessionsHelper
       end
     elsif user_id = cookies.encrypted[:user_id]
       user = User.find_by(id: user_id)
-      if user&.authenticated?(cookies.encrypted[:remember_token])
+      if user&.authenticated?(:remember, cookies.encrypted[:remember_token])
         login user
         @current_user = user
       end
@@ -47,4 +47,10 @@ module SessionsHelper
   def current_user? user
     user&. == current_user
   end
+
+  # Stores the URL trying to be accessed
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
+
 end

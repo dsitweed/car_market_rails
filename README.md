@@ -94,6 +94,7 @@ rails generate integration_test site_layout
 # invoke  test_unit
 # create    test/integration/site_layout_test.rb
 # rails test:integration
+# rails test test/mailers/user_mailer_test.rb
 ```
 
 4. Môi trường test sau khi test sẽ được rollback
@@ -179,3 +180,26 @@ end
 ```
 
 Giải quyết phản hồi hiện ra view ở file: <action>.turbo_stream.erb 13. Luôn luôn ghi nhớ sử dung Eager Loading
+
+13. Gửi email
+
+```bash
+rails generate mailer UserMailer account_activation password_reset
+```
+
+#### Config for send gmail
+
+```ruby
+  config.action_mailer.default_url_options = {host: "localhost:3000"}
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto: true,
+    address: "smtp.gmail.com",
+    port: 587,
+    :domain => 'smtp.gmail.com',
+    user_name: 'luffy3042001@gmail.com',  # Tên tài khoản gmail mà các bạn tạo mật khẩu ứng dụng.
+    password: 'bivnraxz********',      # Mật khẩu ứng dụng của các bạn. (ở đây mình cố tình thay bằng dấu * đấy)
+    authentication: :plain
+  }
+```
