@@ -53,6 +53,10 @@ class User < ApplicationRecord
     UserMailer::account_activation(self).deliver_now
   end
 
+  def send_activation_email_sidekiq
+    SendEmailJob.set(wait: 30.seconds).perform_later()
+  end
+
   private
 
   # Converts email to all lower-case.

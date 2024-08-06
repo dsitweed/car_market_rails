@@ -10,12 +10,13 @@ class UsersController < ApplicationController
 
   def show
     redirect_to root_url and return unless @user.activated?
+    @user.send_activation_email_sidekiq
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.send_activation_email
+      @user.send_activation_email_sidekiq
       message = "User created successfully. "
       message += "Please check your email to activation your account."
       flash[:info] = message

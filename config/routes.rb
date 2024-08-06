@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   root "static_pages#home"
 
@@ -11,4 +13,5 @@ Rails.application.routes.draw do
 
   resources :users
   resources :account_activations, only: ["edit"]
+  mount Sidekiq::Web => "/sidekiq"
 end

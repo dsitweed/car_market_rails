@@ -22,7 +22,9 @@ gem "faker"
 gem "font-awesome-sass"
 gem "pagy"
 gem "sassc-rails"
-gem "tailwindcss-rails"
+# gem "tailwindcss-rails"
+gem "dotenv-rails"
+gem "sidekiq"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
